@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "f40b9b2e48a2f137651a13d75f7da3536a27ae39928becf1f963f869d4afd020"
+            "sha256": "7e2cfbb46679eda022da0309a4da112a2ecdf93ae0a4c7f4a5bf7276cf220a29"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -59,6 +59,10 @@
                 "sha256:fcbfeaea0be121980e15bc97b3817b5202ca73d0eae185b4550cbfce2a3ebb3d"
             ],
             "version": "==4.3.0"
+        },
+        "pixela-letters": {
+            "editable": true,
+            "path": "."
         },
         "pluggy": {
             "hashes": [
