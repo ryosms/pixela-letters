@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from pixela_letters.date_converter import parse_from_ymd_string, find_last_monday
+from pixela_letters.date_converter import parse_from_ymd_string, find_last_monday, convert_to_ymd_string
 
 
 def test_can_parse_valid_date():
@@ -16,6 +16,12 @@ def test_cannot_parse_invalid_date():
 def test_cannot_parse_invalid_string():
     result = parse_from_ymd_string('abc')
     assert result is None
+
+
+def test_can_convert_to_string():
+    actual = convert_to_ymd_string(datetime(year=2018, month=11, day=12))
+    expected = '20181112'
+    assert actual == expected
 
 
 def test_can_find_last_monday():

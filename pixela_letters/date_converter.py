@@ -9,5 +9,9 @@ def parse_from_ymd_string(ymd: str) -> Optional[datetime]:
         return None
 
 
+def convert_to_ymd_string(target: datetime) -> str:
+    return '{0:%Y%m%d}'.format(target)
+
+
 def find_last_monday(source: datetime) -> datetime:
     return source - timedelta(days=source.weekday())
