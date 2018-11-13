@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from pixela_letters.date_converter import parse_from_ymd_string, find_last_monday, convert_to_ymd_string
+from pixela_letters.date_converter import parse_from_ymd_string, find_last_start_date, convert_to_ymd_string
 
 
 def test_can_parse_valid_date():
@@ -24,15 +24,15 @@ def test_can_convert_to_string():
     assert actual == expected
 
 
-def test_can_find_last_monday():
+def test_can_find_last_start_date():
     target = datetime(year=2018, month=11, day=12)
-    expected = datetime(year=2018, month=11, day=12)
-    actual = find_last_monday(target)
+    expected = datetime(year=2018, month=11, day=11)
+    actual = find_last_start_date(target)
     assert actual == expected
 
 
-def test_can_find_last_monday2():
+def test_can_find_last_start_date2():
     target = datetime(year=2018, month=12, day=1)
-    expected = datetime(year=2018, month=11, day=26)
-    actual = find_last_monday(target)
+    expected = datetime(year=2018, month=11, day=25)
+    actual = find_last_start_date(target)
     assert actual == expected
