@@ -4,8 +4,8 @@ from datetime import datetime, timedelta
 import dotenv
 import requests
 
-from letters import Letters
 from pixela_letters.date_converter import find_last_start_date, convert_to_ymd_string
+from pixela_letters.letters import Letters
 
 
 def run():
