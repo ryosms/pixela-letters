@@ -1,0 +1,2 @@
+class AlphabetLowercase(object):
+    pass

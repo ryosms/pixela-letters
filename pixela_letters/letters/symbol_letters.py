@@ -1,0 +1,2 @@
+class SymbolLetters(object):
+    pass
