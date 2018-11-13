@@ -16,10 +16,13 @@ class Letters(AlphabetUppercase, AlphabetLowercase, SymbolLetters):
         for key in poem:
             if self.need_space(last_letter, key):
                 quantities.extend(self.space())
+            last_letter = key
 
             if key not in self.letters_dict:
                 # create quantities
                 self.letters_dict[key] = self.load_quantities(key)
+
+            assert len(self.letters_dict[key]) == 7
 
             quantities.extend(self.transpose_matrix(self.letters_dict[key]))
 
@@ -57,8 +60,3 @@ class Letters(AlphabetUppercase, AlphabetLowercase, SymbolLetters):
         for line in zip(*matrix):
             result.extend(line)
         return result
-
-
-if __name__ == '__main__':
-    clazz = Letters()
-    print(clazz.create_quantities('A'))
