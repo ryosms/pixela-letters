@@ -4,13 +4,19 @@ from pixela_letters.letters.symbol_letters import SymbolLetters
 
 
 class Letters(AlphabetUppercase, AlphabetLowercase, SymbolLetters):
+    no_space_combination = {'T': 'A', 'A': 'T'}
+
     def __init__(self):
         self.letters_dict = {}
         pass
 
     def create_quantities(self, poem: str) -> list:
         quantities = []
+        last_letter = ''
         for key in poem:
+            if self.need_space(last_letter, key):
+                quantities.extend(self.space())
+
             if key not in self.letters_dict:
                 # create quantities
                 invoker = self.load_quantities(key)
@@ -20,10 +26,20 @@ class Letters(AlphabetUppercase, AlphabetLowercase, SymbolLetters):
                     self.letters_dict[key] = [key, key]
             quantities.extend(self.letters_dict[key])
 
-        return self.transpose_matrix(quantities)
+        if len(quantities) > 0:
+            quantities.extend(self.space())
+
+        return quantities
+
+    def need_space(self, last: str, current: str) -> bool:
+        if last == ' ' or current == ' ':
+            return False
+        if last in self.no_space_combination \
+                and self.no_space_combination[last] == current:
+            return False
+        return True
 
     def load_quantities(self, letter: str):
-        print(f"called![{letter}]")
         try:
             return getattr(self, letter)
         except AttributeError:

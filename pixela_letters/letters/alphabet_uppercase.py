@@ -9,7 +9,7 @@ class AlphabetUppercase(object):
         # . . . #
         # . . . #
         """
-        return [
+        return self.transpose_matrix([
             [0, 0, 1, 0, 0],
             [0, 1, 0, 1, 0],
             [0, 1, 0, 1, 0],
@@ -17,4 +17,4 @@ class AlphabetUppercase(object):
             [1, 1, 1, 1, 1],
             [1, 0, 0, 0, 0],
             [1, 0, 0, 0, 1],
-        ]
+        ])
