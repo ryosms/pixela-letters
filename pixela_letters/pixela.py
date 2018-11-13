@@ -12,7 +12,7 @@ def run():
     dotenv.load_dotenv()
     user_name = os.environ.get('PIXELA_USER')
     token = os.environ.get('PIXELA_TOKEN')
-    graph_name = "letters"
+    graph_name = os.environ.get('PIXELA_GRAPH_ID')
 
     letters = Letters()
     graphs = letters.create_quantities('CONGRATULATIONS!')
