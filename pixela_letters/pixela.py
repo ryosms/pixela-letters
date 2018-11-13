@@ -6,19 +6,20 @@ import requests
 
 from pixela_letters.date_converter import find_last_start_date, convert_to_ymd_string
 from pixela_letters.letters import Letters
+from pixela_letters.parameters import Parameters
 
 
 def run():
     dotenv.load_dotenv()
-    user_name = os.environ.get('PIXELA_USER')
-    token = os.environ.get('PIXELA_TOKEN')
-    graph_name = os.environ.get('PIXELA_GRAPH_ID')
+
+    parameters = Parameters()
+    parameters.parse(os.environ.get('PIXELA_USER'), os.environ.get('PIXELA_TOKEN'))
 
     letters = Letters()
-    graphs = letters.create_quantities('CONGRATULATIONS!')
+    graphs = letters.create_quantities(parameters.poem)
     target_date = find_last_start_date(datetime.now() - timedelta(days=len(graphs)))
-    endpoint = f"https://pixe.la/v1/users/{user_name}/graphs/{graph_name}"
-    header = {'X-USER-TOKEN': token}
+    endpoint = f"https://pixe.la/v1/users/{parameters.user_name}/graphs/{parameters.graph_name}"
+    header = {'X-USER-TOKEN': parameters.token}
 
     for q in graphs:
         quantity = ((q * 4) + 1) * 5  # min: 5, max: 25
