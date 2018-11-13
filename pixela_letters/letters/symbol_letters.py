@@ -1,7 +1,13 @@
 class SymbolLetters(object):
     symbol_table = {
-        ' ': 'space'
+        ' ': 'space',
+        '!': 'exclamation'
     }
 
-    def space(self):
+    @staticmethod
+    def space():
         return [0, 0, 0, 0, 0, 0, 0]
+
+    @staticmethod
+    def exclamation():
+        return [1, 1, 1, 1, 1, 0, 1]
