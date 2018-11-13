@@ -50,7 +50,7 @@ class Letters(AlphabetUppercase, AlphabetLowercase, SymbolLetters):
     @staticmethod
     def transpose_matrix(matrix):
         assert isinstance(matrix, list)
-        if not isinstance(matrix[0], list):
+        if len(matrix) == 0 or not isinstance(matrix[0], list):
             return matrix
 
         result = []
