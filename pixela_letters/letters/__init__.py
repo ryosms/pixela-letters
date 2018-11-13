@@ -19,12 +19,9 @@ class Letters(AlphabetUppercase, AlphabetLowercase, SymbolLetters):
 
             if key not in self.letters_dict:
                 # create quantities
-                invoker = self.load_quantities(key)
-                if invoker is not None:
-                    self.letters_dict[key] = invoker()
-                else:
-                    self.letters_dict[key] = [key, key]
-            quantities.extend(self.letters_dict[key])
+                self.letters_dict[key] = self.load_quantities(key)
+
+            quantities.extend(self.transpose_matrix(self.letters_dict[key]))
 
         if len(quantities) > 0:
             quantities.extend(self.space())
@@ -40,12 +37,22 @@ class Letters(AlphabetUppercase, AlphabetLowercase, SymbolLetters):
         return True
 
     def load_quantities(self, letter: str):
-        try:
-            return getattr(self, letter)
-        except AttributeError:
-            return None
+        key = letter
+        if key in self.symbol_table:
+            key = self.symbol_table[key]
 
-    def transpose_matrix(self, matrix):
+        try:
+            return getattr(self, key)()
+        except AttributeError:
+            # TODO: handle
+            return []
+
+    @staticmethod
+    def transpose_matrix(matrix):
+        assert isinstance(matrix, list)
+        if not isinstance(matrix[0], list):
+            return matrix
+
         result = []
         for line in zip(*matrix):
             result.extend(line)
