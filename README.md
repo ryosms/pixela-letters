@@ -25,5 +25,5 @@ $ pipenv install
 $ cp sample.env .env
 $ vi .env
 
-$ pipenv run python pixela_letters/pixela.py
+$ pipenv run python -m pixela_letters
 ```
