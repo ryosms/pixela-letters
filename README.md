@@ -5,25 +5,25 @@ Let's writer poems on the Pixela graph!
 
 ### Dependencies
 
-* Python 3.6
-* Pipenv
+* Python 3.8 or higher
+* [Poetry](https://python-poetry.org/)
 * [Pixela](https://pixe.la)
   * create your graph definition
 
 ### Usage
 
 1. clone this repository
-1. Setup python virtual environment
-1. Setup your environment value
-1. Run script!
+2. Setup python virtual environment
+3. Setup your environment value
+4. Run script!
 
 
 ```bash
 $ git clone https://github.com/ryosms/pixela-letters
 $ cd pixela-letters
-$ pipenv install
+$ poetry install
 $ cp sample.env .env
 $ vi .env
 
-$ pipenv run python -m pixela_letters
+$ poetry run python -m pixela_letters
 ```
