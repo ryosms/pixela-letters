@@ -16,16 +16,17 @@ jobs:
           - "3.11"
     steps:
       - uses: actions/checkout@v3
+      - name: Setup poetry
+        run: |
+          pipx install poetry
+          poetry config virtualenvs.create false
       - name: Setup python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
           cache: 'poetry'
-      - name: Setup poetry and Run test
-        run: |
-          pip install poetry
-          poetry config virtualenvs.create false
-          poetry install
+      - name: Install libraries
+        run: poetry install
       - name: Run check
         run: make check
       - name: Run test
