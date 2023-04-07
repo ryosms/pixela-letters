@@ -1,5 +1,4 @@
 class AlphabetLowercase(object):
-
     @staticmethod
     def a():
         """
@@ -179,9 +178,7 @@ class AlphabetLowercase(object):
         . # .
         . # .
         """
-        return [
-            [0], [1], [0], [1], [1], [1], [1]
-        ]
+        return [[0], [1], [0], [1], [1], [1], [1]]
 
     @staticmethod
     def j():
