@@ -17,9 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Setup poetry
-        run: |
-          pipx install poetry
-          poetry config virtualenvs.create false
+        run: pipx install poetry
       - name: Setup python
         uses: actions/setup-python@v4
         with:
