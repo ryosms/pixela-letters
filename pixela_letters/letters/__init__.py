@@ -4,7 +4,7 @@ from pixela_letters.letters.symbol_letters import SymbolLetters
 
 
 class Letters(AlphabetUppercase, AlphabetLowercase, SymbolLetters):
-    no_space_combination = {'T': 'A', 'A': 'T'}
+    no_space_combination = {"T": "A", "A": "T"}
 
     def __init__(self):
         self.letters_dict = {}
@@ -12,7 +12,7 @@ class Letters(AlphabetUppercase, AlphabetLowercase, SymbolLetters):
 
     def create_quantities(self, poem: str) -> list:
         quantities = []
-        last_letter = ''
+        last_letter = ""
         for key in poem:
             if self.need_space(last_letter, key):
                 quantities.extend(self.space())
@@ -32,10 +32,9 @@ class Letters(AlphabetUppercase, AlphabetLowercase, SymbolLetters):
         return quantities
 
     def need_space(self, last: str, current: str) -> bool:
-        if last == ' ' or current == ' ':
+        if last == " " or current == " ":
             return False
-        if last in self.no_space_combination \
-                and self.no_space_combination[last] == current:
+        if last in self.no_space_combination and self.no_space_combination[last] == current:
             return False
         return True
 
