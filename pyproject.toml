@@ -9,7 +9,7 @@ packages = [{ include = "pixela_letters" }]
 
 [tool.poetry.dependencies]
 python = "^3.8.1"
-requests = "^2.28.2"
+requests = "^2.31.0"
 python-dotenv = "^1.0.0"
 
 [tool.poetry.group.dev.dependencies]
